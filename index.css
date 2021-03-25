@@ -43,6 +43,7 @@ body {
 
 #pokemon-img {
 	background-color: white;
+	border-radius: 15px;
 	height: 250px;
 	width: 250px;
 	position: absolute;
@@ -52,6 +53,7 @@ body {
 
 #pokemon-info-div {
 	background-color: white;
+	border-radius: 15px;
 	height: 350px;
 	width: calc(70% - 15%);
 	position: absolute;
@@ -61,6 +63,7 @@ body {
 
 #evo-div {
 	background-color: white;
+	border-radius: 15px;
 	height: calc( 250px + 50px + 350px );
 	width: calc(20% - 10%);
 	position: absolute;

@@ -60,7 +60,6 @@ $.getJSON("pokedex.json", function(json) {
 	console.log(json)
 })
 
-
 $(".searchbox").on('keyup', function (e) {
 	pokeInfo($("#searchbox").val(), false, false)
 })
