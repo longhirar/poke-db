@@ -1,10 +1,10 @@
 var pokeHistory = []
-function pokeInfo(search, replaceSearchbox, ignoreHistory) {
-	if (!ignoreHistory){
-		history.pushState({}, "", "")
-		pokeHistory.push($('#pokemon-name').html())
-	}
 
+function evoButton(name, id) {
+	return '<tr><td><a id="evo-option" href="#" onclick="pokeInfo('+id+', true, false)">'+name+'</a></td></tr>'
+}
+
+function pokeInfo(search, replaceSearchbox, ignoreHistory) {
 	var sint = parseInt(search)
 
 	if(sint > 0){	
@@ -38,7 +38,7 @@ function pokeInfo(search, replaceSearchbox, ignoreHistory) {
  	for (var i = pokedata[sint-1]["evolutions"].length - 1; i >= 0; i--) {
  		var pkmid = pokedex[pokedata[sint-1]["evolutions"][i]["to"]]
  		var pkmname = pokedata[sint-1]["evolutions"][i]["to"].toUpperCase()
- 		evo_table += '<tr><td><a href="#" id="evo-option" onclick="pokeInfo('+pkmid+', true, false)">'+pkmname+"</a></td></tr>"
+ 		evo_table += evoButton(pkmname, pkmid)
  	}
  	$('#evo-table').html(evo_table)
 }
