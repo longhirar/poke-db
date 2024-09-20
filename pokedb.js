@@ -22,7 +22,8 @@ function pokeInfo(search, replaceSearchbox, ignoreHistory) {
     // if replaceSearchbox is set, then replace the search box with current pokemon name
     if(replaceSearchbox){$('#searchbox').val(pokedata[sint - 1]["name"])}
 
-	$('#pokemon-img').attr("src", pokedata[sint - 1]["art_url"])
+	let img_url = `https://corsproxy.io/?${encodeURIComponent(pokedata[sint - 1]["art_url"])}`;
+	$('#pokemon-img').attr("src", img_url);
 
 	$('#pokemon-name').html(pokedata[sint - 1]["name"])
 	var types = "";
