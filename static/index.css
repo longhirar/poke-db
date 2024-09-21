@@ -106,3 +106,7 @@ footer > #external-links > .external-link {
     align-items: center;
     gap: 1rem;
 }
+
+#pokemon-img {
+    max-width: 70vmin;
+}
