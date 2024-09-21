@@ -1,7 +1,10 @@
 var pokeHistory = []
 
 function evoButton(name, id) {
-	return '<tr><td><a id="evo-option" href="#" onclick="pokeInfo('+id+', true, false)">'+name+'</a></td></tr>'
+
+	let disabled = !pokedex[capitalize(name.toLowerCase())]
+
+	return `<button ${disabled ? "disabled" : ""} type="button" class="btn btn-primary" onclick="pokeInfo('${id}', true, false)">${name}</button>`;
 }
 
 function pokeInfo(search, replaceSearchbox, ignoreHistory) {
@@ -28,20 +31,27 @@ function pokeInfo(search, replaceSearchbox, ignoreHistory) {
 	$('#pokemon-name').html(pokedata[sint - 1]["name"])
 	var types = "";
 	for (var i = pokedata[sint-1]["types"].length - 1; i >= 0; i--) {
-		types += pokedata[sint-1]["types"][i].toUpperCase() + " "
+		types += `<span class="badge text-bg-primary">${pokedata[sint-1]["types"][i].toUpperCase()}</span>`
 	}
 	$('#pokemon-type').html(types)
 	$('#pokemon-desc').html(pokedata[sint-1]["description"])
  	$('#pokemon-pkdx-id').html("PKDX ID: " + sint)
 
- 	$('#evo-table').html("")
- 	var evo_table = ""
- 	for (var i = pokedata[sint-1]["evolutions"].length - 1; i >= 0; i--) {
- 		var pkmid = pokedex[pokedata[sint-1]["evolutions"][i]["to"]]
- 		var pkmname = pokedata[sint-1]["evolutions"][i]["to"].toUpperCase()
- 		evo_table += evoButton(pkmname, pkmid)
- 	}
- 	$('#evo-table').html(evo_table)
+ 	$('#pokemon-evos-buttons').empty();
+ 	
+	console.log('evos');
+	pokedata[sint-1]["evolutions"].forEach(evo => {
+		$('#pokemon-evos-buttons')[0].innerHTML += evoButton(evo["to"], evo["to"]);
+		console.log($('#pokemon-evos-buttons')[0].innerHTML);
+	});
+ 	// for (var i = pokedata[sint-1]["evolutions"].length - 1; i >= 0; i--) {
+ 	// 	var pkmid = pokedex[pokedata[sint-1]["evolutions"][i]["to"]]
+ 	// 	var pkmname = pokedata[sint-1]["evolutions"][i]["to"].toUpperCase()
+ 	// 	evo_table += 
+ 	// }
+	// console.log(evo_table);
+	console.log('pos-evos');
+ 	$('#pokemon-evos-buttons').html(evo_table)
 }
 
 const capitalize = (s) => {
@@ -52,16 +62,17 @@ const capitalize = (s) => {
 
 var pokedata = []
 var pokedex = []
-$.getJSON("pokedata.json", function(json) {
-	pokedata = json;
-	console.log(json)
-})
-$.getJSON("pokedex.json", function(json) {
-	pokedex = json;
-	console.log(json)
+$.getJSON("static/pokedata.json", function(_pokedata) {
+	$.getJSON("static/pokedex.json", function(_pokedex) {
+		pokedata = _pokedata;
+		pokedex = _pokedex;
+		pokeInfo(`${Math.floor(Math.random() * Object.keys(pokedex).length) + 1}`, true, false);
+
+	})
 })
 
-$(".searchbox").on('keyup', function (e) {
+
+$("#searchbox").on('keyup', function (e) {
 	pokeInfo($("#searchbox").val(), false, false)
 })
 

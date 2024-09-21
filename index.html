@@ -1,38 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>PokéDB</title>
-	<link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéDB</title>
+    <link rel="stylesheet" href="static/bootstrap@5.3.3/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/index.css">
 </head>
 <body>
-	<header id="header">
-		<h1 id="page-title">PokéDB</h1>
-		<input type="text" name="searchbox" id="searchbox" class="searchbox" placeholder="Enter pokémon name or id">
-		<hr id="header-hr">
-	</header>
+    <!-- Header Section -->
+    <header id="header" class="bg-light text-center p-3">
+        <h1 id="page-title" class="display-4">PokéDB</h1>
+        <input type="text" name="searchbox" id="searchbox" class="form-control" placeholder="Search Pokémon Name or ID">
+    </header>
 
-	<div id="view-div">
-		<img src="" id="pokemon-img">
+    <div id="view-div" class="container">
 
-		<div id="pokemon-info-div">
-		<h1 id="pokemon-name"></h1>
-		<p id="pokemon-type"></p>
-		<p id="pokemon-pkdx-id"></p>
-		<p id="pokemon-desc"></p>
-		</div>
+            <div class="pokemon-image">
+                <img src="" id="pokemon-img">
+            </div>
 
-		<div id="evo-div">
-		<p id="evo-text">EVOLUTIONS</p>
-		<table id="evo-table">
-			<tbody>
-			</tbody>
-		</table>
-		</div>
+            <div id="pokemon-info-div">
+                <h1 id="pokemon-name"></h1>
+                <p id="pokemon-type" class="text-secondary"></p>
+                <p id="pokemon-pkdx-id" class="text-secondary"></p>
+                <p id="pokemon-desc" class="text-dark"></p>
+            </div>
 
-		
-	</div>
-	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="pokedb.js"></script>
+			<div id="pokemon-evos-div" class="container vertical">
+				<p id="evo-text" class="text-secondary">Evolutions</p>
+				<div id="pokemon-evos-buttons">
+
+				</div>
+			</div>
+    </div>
+
+	<footer>
+        <h3 class="highlight">Rafael Longhi</h3>
+        <div class="link-row" id="external-links">
+            <a href="https://github.com/longhirar" class="external-link">
+                <img src="https://longhi.dev/res/icons/github.svg" alt="GitHub">
+            </a>
+            <a href="https://linkedin.com/in/rafael-longhi-guimaraes" class="external-link">
+                <img src="https://longhi.dev/res/icons/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="mailto:rafael.l.v.guimaraes@gmail.com" class="external-link">
+                <img src="https://longhi.dev/res/icons/email.svg" alt="Email">
+            </a>
+        </div>
+        <p>
+            Rafael Longhi &copy; 2024 <br>
+			PokéDB 2.0 <br>
+			Licensed under the <a href="LICENSE" download="License.txt">MIT License</a>
+        </p>
+    </footer>
+
+
+    <script type="text/javascript" src="static/jquery@3.6.0/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="static/bootstrap@5.3.3/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/pokedb.js"></script>
 </body>
 </html>
